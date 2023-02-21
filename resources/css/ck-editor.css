@@ -1,0 +1,9 @@
+.ck-editor__editable {
+    background-color: #374151 !important;
+    color: #FFF !important;
+  } 
+ .ck{
+    background: #374151 !important;
+    color: #d1d5db !important;
+ } 
+ /* https://laracasts.com/discuss/channels/vue/how-set-height-of-ckeditor-with-vuejs-component */

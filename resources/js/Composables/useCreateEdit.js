@@ -1,0 +1,124 @@
+import { usePage } from '@inertiajs/inertia-vue3'
+import {Inertia} from "@inertiajs/inertia";
+import { onMounted, computed, defineEmits  } from 'vue';
+
+//components
+import xGrid from '@/Components/Grid.vue'
+import xGridCol from '@/Components/GridCol.vue'
+import xLoading from '@/Components/Loading.vue'
+import xPanel from '@/Components/Panel.vue'
+import xFormGroup from '@/Components/FormGroup.vue'
+import xInput from '@/Components/TextInput.vue'
+// import xInput from '@/Components/Input.vue'
+import xSelect from '@/Components/Select.vue'
+import xTextarea from '@/Components/Textarea.vue'
+import xCheckbox from '@/Components/Checkbox.vue'
+import xButton from '@/Components/Button.vue'
+import CKEditor from '@ckeditor/ckeditor5-vue';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import AppLayout from '@/System/Layouts/AppLayout.vue'
+import xCreateEditTemplate from '@/System/Pages/Templates/CRUD/CreateEdit.vue'
+import TextInput from '@/Components/TextInput.vue';
+
+import {useNotify} from "@/Composables/useNotify";
+
+let {notification} = useNotify();
+// just import your $notify
+// sample
+// import { $notify as $$notify } from '$notify.js'
+
+const ckeditor = CKEditor.component;
+
+export const createEditProps = {
+    setup:Object,
+    cardData:Object,
+    selected:{default:[]},
+}
+
+
+export const useCreateEdit = (props, setData, form) => {
+    onMounted(() => {
+        if(props.cardData != null && props.cardData.uuid != null){
+            setData();
+        }
+    })
+
+
+    function submit(){
+        // you shouldn't be mutating parent props
+        // you can use props down, event up instead
+        // ie. let's say you have an isLoading props, you can use
+        // vue 3 v-model:isLoading="someBoolProp" in the parent
+        // then emit on child
+
+        //send page loader true; 
+         // isLoading = true;
+        let formData = new FormData();
+        for ( var key in form ) {
+            formData.append(key, form[key]);
+        }
+        axios.post(props.setup.settings.indexRoute+'/store',formData).then(response => {
+            if(response.status == 200){
+                notification(response.data.message, response.data.type);
+                if(form.uuid == null || form.uuid == ''){
+                    Inertia.visit(props.setup.settings.indexRoute);
+                }
+            }
+            else{
+                notification(usePage().props.value.defaultErrors.default, 'error');
+            }
+            // isLoading = false;
+        }).catch((error) => {
+            if(error.response.status == 422){
+                var errors= [];
+                errors = error.response.data.errors;
+                for (let field of Object.keys(errors)) {
+                    notification(errors[field][0], 'error');
+                }
+            }else{
+                notification(usePage().props.value.defaultErrors.default, 'error');
+            }            
+            // isLoading = false;
+        })
+    }
+
+    function onFileChange(event,formVar,previewVar) {
+        let files = event.target.files;
+        if (files.length)
+            form[formVar] = files[0];
+            if(previewVar != ''){            
+                // i don't know what this is need more context    
+                // i assume you have set some data in consumer
+                // you can try getCurrentInstance
+                previewVar.value = URL.createObjectURL(files[0]);
+            }
+    }
+    
+    return {
+        editor: ClassicEditor,
+        editorConfig: {
+            // The configuration of the editor.
+            editorConfig: {
+                stylesSet: [
+                    { name: 'Dark Theme', type: 'widget', widget: 'customStyle' }
+                ]
+            }
+        },
+        submit,
+        onFileChange,
+        ckeditor,
+        xGrid,
+        xFormGroup,
+        xGridCol,
+        xLoading,
+        xPanel,
+        xInput,
+        xSelect,
+        xTextarea,
+        xCheckbox,
+        xButton,
+        AppLayout,
+        xCreateEditTemplate,
+        TextInput
+    }
+}
