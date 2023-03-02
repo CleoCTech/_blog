@@ -15,16 +15,16 @@
                     <h5 class="text-xs sm:text-sm md:text-md text-white font-semibold items-center">{{title}}</h5>
                 </div>
                 <!--right side-->
-                <div class="hidden sm:flex">
-                    <jet-dropdown>
+                <div class="hidden sm:flex ">
+                    <jet-dropdown >
                         <template #trigger>
                             <div class="flex items-center px-1 cursor-pointer">
-                                <img class="h-10 w-10 rounded-full mt-0 mb-0" src="/storage/general/obama.jpg" alt="photo" />
+                                <img class="h-10 w-10 rounded-full mt-0 mb-0 text-white" src="/storage/general/obama.jpg" alt="photo" />
                                 <span class="pl-2 text-white text-sm">{{user != null? user.name:'Default'}}</span>
                             </div>
                         </template>
                         <template #content>
-                            <Link :href="route('logout')" method="post" as="button" class="z-50 bg-theme1 hover:bg-green-700 text-white w-full py-1 text-sm text-left pl-4 flex items-center">
+                            <Link :href="route('logout')" method="post" as="button" class="z-50 hover:bg-gray-700 text-white w-full py-1 text-sm text-left pl-4 flex items-center ">
                                 <span class="flex items-center w-full "><unicon name="sign-out-alt"/> Log Out</span>
                             </Link>
                         </template>

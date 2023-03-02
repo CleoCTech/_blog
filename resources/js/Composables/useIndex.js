@@ -17,10 +17,10 @@ export const indexProps = {
     listData:Object,
 }
 
-const selected = ref(['']);
+const selected = ref([]);
 const isMultipleSelect = ref(false);
 
-export const useIndex = (props ) => {
+export const useIndex = (props) => {
 
     function onCheck(item){
         if(selected.indexOf(item) === -1){
@@ -30,22 +30,24 @@ export const useIndex = (props ) => {
         }
     }
     function onRowClick(item){
-        selected = [];
-        selected.push(item);
+        console.log(item)
+        selected.value = [];
+        selected.value.push(item);
+        console.log(selected)
     }
     function isSelected(item){
-        if(selected.indexOf(item) === -1){
-            return false;
-        }else{
-            return true;
-        }
+        return selected.value.indexOf(item) === -1
+        // if(selected.indexOf(item) === -1){
+        //     return false;
+        // }else{
+        //     return true;
+        // }
     }
 
-    watch(isMultipleSelect, () => {
-        if(isMultipleSelect == false){
-            selected = [];
+    watch(isMultipleSelect, (newV, oldV) => {
+        if(newV == false){
+            selected.value = [];
         }
-        // console.log(`Count changed from ${oldValue} to ${newValue}`);
     });
 
     return {
@@ -58,6 +60,8 @@ export const useIndex = (props ) => {
         xTableth,
         xTabletr,
         xBadge,
-        xIndexTemplate
+        xIndexTemplate,
+        selected,
+        isMultipleSelect
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Post\Post;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Session;
@@ -27,7 +29,7 @@ class User extends Authenticatable
      * @var string<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'uuid', 'name', 'email', 'password',
     ];
 
     /**
@@ -66,5 +68,15 @@ class User extends Authenticatable
     public function setProfileAttribute($value)
     {
         Session::put('profile', $value);
+    }
+
+    /**
+     * Get all of the posts for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class, 'user_id', 'id');
     }
 }

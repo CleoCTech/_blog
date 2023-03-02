@@ -20,12 +20,14 @@ import AppLayout from '@/System/Layouts/AppLayout.vue'
 import xCreateEditTemplate from '@/System/Pages/Templates/CRUD/CreateEdit.vue'
 import TextInput from '@/Components/TextInput.vue';
 
+import { provide, getCurrentInstance } from 'vue'
 import {useNotify} from "@/Composables/useNotify";
 
 let {notification} = useNotify();
 // just import your $notify
 // sample
 // import { $notify as $$notify } from '$notify.js'
+
 
 const ckeditor = CKEditor.component;
 
@@ -43,7 +45,7 @@ export const useCreateEdit = (props, setData, form) => {
         }
     })
 
-
+    const context = getCurrentInstance()?.appContext.config.globalProperties;
     function submit(){
         // you shouldn't be mutating parent props
         // you can use props down, event up instead
@@ -53,6 +55,7 @@ export const useCreateEdit = (props, setData, form) => {
 
         //send page loader true; 
          // isLoading = true;
+        context.$showLoading();
         let formData = new FormData();
         for ( var key in form ) {
             formData.append(key, form[key]);
@@ -68,6 +71,7 @@ export const useCreateEdit = (props, setData, form) => {
                 notification(usePage().props.value.defaultErrors.default, 'error');
             }
             // isLoading = false;
+            context.$hideLoading()
         }).catch((error) => {
             if(error.response.status == 422){
                 var errors= [];
@@ -79,6 +83,7 @@ export const useCreateEdit = (props, setData, form) => {
                 notification(usePage().props.value.defaultErrors.default, 'error');
             }            
             // isLoading = false;
+            context.$hideLoading()
         })
     }
 

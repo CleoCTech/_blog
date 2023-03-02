@@ -8,6 +8,7 @@
     export default{
         props:{row:{default:0},url:{default:''},isSelected:{default:false}},
         components:{Inertia},
+        inject: ['onRowClick'],
         data(){
             return{
                 rowNo:0,
@@ -22,7 +23,7 @@
         methods:{
             onclick(){
                 if(this.url != ''){
-                    this.$parent.$parent.$parent.onRowClick(this.row);
+                    this.onRowClick(this.row)
                 }
             },
             onDblClick(){

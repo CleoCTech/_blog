@@ -3,10 +3,12 @@ import Navbar from '@/Admin/Partials/Navbar.vue'
 import AdminSidebar from '@/Admin/Partials/Sidebar.vue'
 import { usePage } from '@inertiajs/inertia-vue3'
 import DefaultFooter from '@/System/Partials/Footer.vue'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, getCurrentInstance } from 'vue'
 import {useNotify} from "@/Composables/useNotify";
 
 let {notification} = useNotify();
+
+const context = getCurrentInstance().appContext.config.globalProperties;
 
 defineProps({
     isCrud: { default: true },
@@ -23,6 +25,12 @@ let fullPage = ref(true);
 let authUser = page.props.value.auth.user;
 let config = page.props.value.config;
 
+context.$showLoading = () => {
+    isLoading.value = true
+}
+context.$hideLoading = () => {
+    isLoading.value = false
+}
 
 onMounted(() => {
     // notification({

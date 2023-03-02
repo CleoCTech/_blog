@@ -1,6 +1,6 @@
 <template>
     <div class="px-1">
-        <div class="flex gap-1 sm:gap-2 items-center">
+        <div class="flex gap-1 sm:gap-2 items-center text-gray-300">
             <h3 class="text-xs px-2 underline py-1 font-semibold">Attachments</h3>
             <button @click="this.isNew = !this.isNew" class="flex gap-1 text-xs items-center"><unicon name="plus" fill="black" class="icon-xs"/>New</button>
         </div>

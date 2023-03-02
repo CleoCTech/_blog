@@ -64,6 +64,7 @@
         form.status = props.cardData.status;
         form.publish_time = props.cardData.publish_time2;
     }
+    
     const { editor,editorConfig, submit, onFileChange, ckeditor, xGrid,
         xFormGroup,
         xGridCol,

@@ -1,7 +1,7 @@
 <template>
     <div>
         <x-menu-bar v-bind="{setup,selected}" class="w-full"></x-menu-bar>
-        <div class="flex flex-col md:flex-row mt-1 sm:mt-16 w-full bg-white border rounded-lg">
+        <div class="flex flex-col md:flex-row mt-1 sm:mt-16 w-full bg-gray-800 border rounded-lg shadow-md">
             <x-panel class="grow w-full">
                 <template #title>Create {{setup.settings.caption}}</template>
                 <template #body>

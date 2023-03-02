@@ -26,9 +26,36 @@
         </x-index-template>
     </div>
 </template>
-<script>
-    import IndexMixin from '@/System/Mixins/CRUD/IndexMixin.js'
-    export default{
-        mixins:[IndexMixin],
+<script setup>
+    // import IndexMixin from '@/System/Mixins/CRUD/IndexMixin.js'
+    import { provide, getCurrentInstance } from 'vue'
+    import { indexProps, useIndex } from '@/Composables/useIndex'
+
+    const context = getCurrentInstance()?.appContext.config.globalProperties;
+    
+    // const props = defineProps(indexProps)
+    const props = defineProps({...indexProps})
+
+    const { 
+        selected,
+        onCheck,
+        onRowClick,
+        isSelected,
+        xTable,
+        xTabletd,
+        xTabletdCheckbox,
+        xTablethCheckbox,
+        xTableth,
+        xTabletr,
+        xBadge,
+        xIndexTemplate, isMultipleSelect} = useIndex(props)
+   
+    const showLoading = () => {
+        context.$showLoading()
+        setTimeout(() => {
+            context.$hideLoading()
+        }, 2000)
     }
+    provide('onRowClick', onRowClick);
+    provide('isMultipleSelect', isMultipleSelect);
 </script>

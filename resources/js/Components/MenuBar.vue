@@ -46,6 +46,7 @@
             setup:Object,
             selected:{default:[]},
         },
+        inject: ['isMultipleSelect'],
         data(){
             return{
                 active:'home',
@@ -74,6 +75,9 @@
                 // else if(this.active == "charts" && this.setup.settings.isCharts != false){
                 //     return markRaw(defineAsyncComponent(() => import(`@/Admin/Charts/${/[^/]*$/.exec(this.setup.settings.xFolder)[0]+'/ChartsTab'}.vue`)))
                 // }
+            },
+            onMultipleSelect () {
+                this.isMultipleSelect.value = !this.isMultipleSelect.value
             }
         },
     }

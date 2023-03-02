@@ -56,9 +56,16 @@
         </x-show-template>
     </div>
 </template>
-<script>
-    import ShowMixin from '@/System/Mixins/CRUD/ShowMixin.js'
-    export default{
-        mixins:[ShowMixin],
-    }
+<script setup>
+    import { showProps, useShow } from '@/Composables/useShow.js'
+    const props = defineProps(showProps)
+    const {    
+        xGrid,
+        xGridCol,
+        xLoading,
+        xPanel,
+        xShowGroup,
+        xBadge,
+        xShowTemplate
+    } = useShow(props)
 </script>
