@@ -5,6 +5,7 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "@iconify/vue": "^4.1.0",
         "@inertiajs/inertia": "^0.11.0",
         "@inertiajs/inertia-vue3": "^0.6.0",
         "@inertiajs/progress": "^0.2.7",
@@ -23,9 +24,11 @@
     "dependencies": {
         "@ckeditor/ckeditor5-build-classic": "^35.4.0",
         "@ckeditor/ckeditor5-vue": "^4.0.1",
+        "@heroicons/vue": "^2.0.16",
         "@kyvg/vue3-notification": "^2.7.0",
         "echarts": "^5.4.1",
         "gitart-vue-dialog": "^2.4.1",
+        "oh-vue-icons": "^1.0.0-rc3",
         "pinia": "^2.0.30",
         "swiper": "^8.4.5",
         "vue-echarts": "^6.5.1",

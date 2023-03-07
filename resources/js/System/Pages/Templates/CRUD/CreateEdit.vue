@@ -12,21 +12,20 @@
         </div>
     </div>
 </template>
-<script>
+<script setup>
     import xPanel from '@/Components/Panel.vue'
     import xButton from '@/Components/Button.vue'
     import xMenuBar from '@/Components/MenuBar.vue'
     import xAttachment from '@/Components/Attachment.vue'
-    export default {
-        components:{xPanel,xButton,xMenuBar,xAttachment},
-        props:{
-            setup:Object,
-            selected:{default:[]},
+    import {inject, ref } from 'vue';
+     
+    // let setup =  inject('setup');
+    const props = defineProps({
+        setup: Object,
+        selected: {
+            type: Array,
+            default: null,
         },
-        data(){
-            return{
-                isAttachments:false,
-            }
-        }
-    }
+    });
+    const isAttachments = ref(false);
 </script>

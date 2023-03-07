@@ -1,4 +1,7 @@
 <template>
+  <Head>
+    <title>Home</title>
+  </Head>
    <!-- Header -->
   <header class="pl-4 md:pl-0 h-64 bg-gray-800 bg-center bg-cover"
     style="background-image: url('https://picsum.photos/id/10/2500/1667'); min-height: 500px;">
@@ -314,5 +317,6 @@
 </template>
 
 <script setup>
+  // import { Head } from '@inertiajs/inertia-vue3';
 
 </script>

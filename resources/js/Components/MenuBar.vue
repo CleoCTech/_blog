@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="flex justify-left text-xs pb-0 mb-0 border-b fixed top-12 z-40 bg-gray-800 w-9/12x left-2 sm:left-52 shadow-md" style="right:4px; height: 3.7rem;">
+        <div class="flex justify-left text-xs pb-0 mb-0 border-b fixed top-12 z-40 bg-gray-800 w-9/12x left-2 sm:left-60 shadow-md" style="right:4px; height: 3.7rem;">
             <div class="w-full">
                 <ul id="tabs" class="inline-flex pb-0 px-1 bg-gray-800 w-full">
                     <!-- <li class="px-1 py-1 fontx-semibold text-black rounded-t" :class="active == 'default'? 'border-l border-t border-r border-gray-300':'border-b border-gray-300'"></li> -->

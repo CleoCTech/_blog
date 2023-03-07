@@ -71,6 +71,7 @@ trait LayoutTrait
         $this->viewData = [
             'cardData' => null,
             'setup' => $this->setup,
+            'other' => null,
         ];
     }
     public function defStore($data){
@@ -93,8 +94,8 @@ trait LayoutTrait
         $this->setup['pageType'] = 'edit';
         $this->setup['pageTitle'] = 'Edit '.$this->settings['caption'];
         if ($this->isReltionship) {
-            $cardData = $this->defaultModel::with($this->relationName)
-            ->where('uuid',$uuid)->first();
+            // info($this->relationName);
+            $cardData = $this->defaultModel::with($this->relationName)->where('uuid',$uuid)->first();
         } else {
             $cardData = $this->defaultModel::where('uuid',$uuid)->first();
         }

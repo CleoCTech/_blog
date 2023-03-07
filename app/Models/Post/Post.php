@@ -11,6 +11,7 @@ use App\Traits\Admin\UuidTrait;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Post extends Model
 {
@@ -41,8 +42,8 @@ class Post extends Model
         } 
         if($column == 'visibility'){
             $options = [
-                ['id' => 1,'caption' => 'Public', 'color' => 'bg-gray-400'],
-                ['id' => 2,'caption' => 'Private', 'color' => 'bg-green-500'],
+                ['id' => 1,'caption' => 'Featured', 'color' => 'bg-gray-400'],
+                ['id' => 2,'caption' => 'Default', 'color' => 'bg-green-500'],
             ];
         } 
         if(isset($options)){
@@ -76,9 +77,18 @@ class Post extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function metas(): HasMany
+    // public function metas(): HasMany
+    // {
+    //     return $this->hasMany(MetaPost::class, 'post_id', 'id');
+    // }
+    /**
+     * Get the meta associated with the Post
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function meta(): HasOne
     {
-        return $this->hasMany(MetaPost::class, 'post_id', 'id');
+        return $this->hasOne(MetaPost::class, 'post_id', 'id');
     }
 
     /**

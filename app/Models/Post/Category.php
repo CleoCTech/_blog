@@ -18,6 +18,7 @@ class Category extends Model
     use UuidTrait;
     
     protected $guarded = [];
+    protected $hidden = ['id'];
     protected $casts = [
         'created_at'  => 'date:d-M-Y',
         'updated_at'  => 'date:d-M-Y',

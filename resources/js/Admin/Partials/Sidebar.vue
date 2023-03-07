@@ -1,10 +1,10 @@
 <template>
      <!-- Sidebar -->
      <div id="docs-sidebar" 
-        class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden 
-        fixed top-0 left-0 bottom-0 z-[60] w-52 bg-white border-r border-gray-200 py-10 px-8 overflow-y-auto scrollbar-y 
+        class="flex hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden 
+        fixed top-0 left-0 bottom-0 z-[60] w-56 bg-white border-r border-gray-200 py-10 px-8 overflow-y-auto scrollbar-y 
         lg:block lg:translate-x-0 lg:top-0 lg:right-auto lg:bottom-0 lg:left-[max(0px,calc(50%-60rem))] 
-        lg:z-10 dark:scrollbar-y dark:bg-slate-900">
+        lg:z-10 dark:scrollbar-y dark:bg-slate-900 mr-2">
       <!-- Navigation Toggle -->
       <button type="button" class="ml-auto flex justify-end lg:hidden text-gray-500 hover:text-gray-600" data-hs-overlay="#docs-sidebar" aria-controls="docs-sidebar" aria-label="Toggle navigation">
         <span class="sr-only">Toggle Navigation</span>
@@ -13,47 +13,53 @@
         </svg>
       </button>
       <!-- End Navigation Toggle -->
-
+      
+      <Icon icon="mdi:arrow-left-circle" class="text-3xl bg-white text-gray-900 rounded-full absolute -right-2 top-14 cursor-pointer "/>
       <!-- Nav -->
       <nav id="sidebar-nav" class="relative space-y-8">
         <h5 class="mb-3 ml-0.5 text-sm font-semibold text-slate-900 dark:text-slate-200 pt-8 uppercase">Dashboard</h5>
         <ul class="ml-0.5 space-y-2 border-l-2 border-slate-100 dark:border-slate-800" data-hs-scrollspy="#scrollspy">
-            <sidebar-link :href="route('admin.dashboard')" :active="$page.url == '/admin/dashboard'" class="cursor-pointer uppercase">Home</sidebar-link>
-            <sidebar-link :href="route('system.company')" :active="$page.url == '/system/company-information'" class="cursor-pointer uppercase">Company Information</sidebar-link>
-            <sidebar-link :href="route('system.social')" :active="$page.url == '/system/social-media'" class="cursor-pointer uppercase ">Social Media</sidebar-link>
+            <sidebar-link :href="route('admin.dashboard')" :active="$page.url == '/admin/dashboard'" class="cursor-pointer uppercase"><Icon icon="mdi:home" class="inline-block text-3xl -pt-3 -top-1"/> Home</sidebar-link>
+            <sidebar-link :href="route('system.company')" :active="$page.url == '/system/company-information'" class="cursor-pointer uppercase"> <Icon icon="mdi:account-box-multiple-outline" class="inline-block text-2xl mr-1"/>Company Information</sidebar-link>
+            <sidebar-link :href="route('system.social')" :active="$page.url == '/system/social-media'" class="cursor-pointer uppercase "><Icon icon="mdi:transit-connection-horizontal" class="inline-block text-2xl mr-1 "/>Social Media</sidebar-link>
+          
+        </ul>
+        <ul 
+        class="py-1 pl-4 ml-0.5 space-y-2 border-l-2 border-slate-100 text-slate-500  cursor-pointer
+        hover:border-slate-400
+        dark:text-slate-400 dark:hover:text-slate-300 hs-scrollspy-active:font-medium 
+        hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400 active
+        dark:border-slate-800 uppercase" 
+        data-hs-scrollspy="#scrollspy">
+        <Icon icon="mdi:list-box-outline" class="inline-block text-2xl mr-1 "/>
+            Posts 
+            <span class="inline-block ml-5 cursor-pointer">
+                <Icon icon="mdi:chevron-down" />
+            </span>
+            <sidebar-link :href="route('category.post')" :active="$page.url == '/admin/category-post'" class="cursor-pointer  "><Icon icon="mdi:chevron-right" class="inline-block mr-1 "/>Post Categories</sidebar-link>
+            <sidebar-link :href="route('category.subcategory')" :active="$page.url == '/admin/category-post-sub-categories'" class="cursor-pointer  "><Icon icon="mdi:chevron-right" class="inline-block mr-1 "/>Post Sub-Categories</sidebar-link>
+            <sidebar-link :href="route('tag.post')" :active="$page.url == '/admin/tag-post'" class="cursor-pointer  "><Icon icon="mdi:chevron-right" class="inline-block mr-1 "/>Tags</sidebar-link>
+            <sidebar-link :href="route('post')" :active="$page.url == '/admin/post'" class="cursor-pointer  "><Icon icon="mdi:chevron-right" class="inline-block mr-1 "/>Posts</sidebar-link>
+            <!-- <li><a href="#" class="text-sm block px-4 py-2 text-gray-800 hover:bg-gray-100">Sub-item 2</a></li>
+            <li><a href="#" class="text-sm block px-4 py-2 text-gray-800 hover:bg-gray-100">Sub-item 3</a></li> -->
+        </ul>
+
+        <ul class="ml-0.5 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 " data-hs-scrollspy="#scrollspy">
             <sidebar-link :href="route('logout')" method="post" as="button" class="cursor-pointer uppercase">
-                <unicon name="sign-out-alt"/> Log Out
+                <Icon icon="mdi:logout" class="inline-block text-2xl mr-1"/>  Log Out
             </sidebar-link>
         </ul>
       </nav>
       <!-- Nav -->
     </div>
     <!-- End Sidebar -->
-    <!-- <div class="flex">
-        <aside class=" fixed left-0 top-0 h-screen dark:bg-gray-900 pt-20 dark:text-white">
-            <sidebar-link :href="route('admin.dashboard')" :active="$page.url == '/admin/dashboard'" class="cursor-pointer uppercase ml-4 hover:bg-gray-100 hover:text-blue-700">Home</sidebar-link>
-            <sidebar-link :href="route('system.company')" :active="$page.url == '/system/company-information'" class="cursor-pointer uppercase ml-4 hover:bg-gray-100 hover:text-blue-700">Company Information</sidebar-link>
-            <sidebar-link :href="route('system.social')" :active="$page.url == '/system/social-media'" class="cursor-pointer uppercase ml-4 hover:bg-gray-100 hover:text-blue-700">Social Media</sidebar-link>
-            <sidebar-link :href="route('logout')" method="post" as="button" class="cursor-pointer uppercase ml-4 hover:bg-gray-100 hover:text-blue-700">
-                <unicon name="sign-out-alt"/> Log Out
-            </sidebar-link>
-        </aside>
-    </div> -->
-    <!-- <div class="h-screen sticky z-40">
-        <div class="bg-theme1 fixed left-0 top-0 h-screen  min-h-screen h-full w-full sm:w-full whitespace-nowrap sticky dark:bg-gray-900 dark:border-gray-600 dark:text-white">
-            <sidebar-link :href="route('admin.dashboard')" :active="$page.url == '/admin/dashboard'" class="cursor-pointer uppercase ml-4 hover:bg-gray-100 hover:text-blue-700">Home</sidebar-link>
-            <sidebar-link :href="route('system.company')" :active="$page.url == '/system/company-information'" class="cursor-pointer uppercase ml-4 hover:bg-gray-100 hover:text-blue-700">Company Information</sidebar-link>
-            <sidebar-link :href="route('system.social')" :active="$page.url == '/system/social-media'" class="cursor-pointer uppercase ml-4 hover:bg-gray-100 hover:text-blue-700">Social Media</sidebar-link>
-            <sidebar-link :href="route('logout')" method="post" as="button" class="cursor-pointer uppercase ml-4 hover:bg-gray-100 hover:text-blue-700">
-                <unicon name="sign-out-alt"/> Log Out
-            </sidebar-link>
-        </div>
-    </div> -->
+    
 </template>
-<script>
+<script setup>
     import SidebarLink from '@/Components/SidebarLink.vue'
     import { Link } from '@inertiajs/inertia-vue3'
-    export default{
-        components:{SidebarLink,Link}
-    }
+    import { IoArrowBackCircleOutline } from "oh-vue-icons/icons";
+
+    import { Icon } from '@iconify/vue';
+
 </script>

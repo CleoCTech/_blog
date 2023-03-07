@@ -20,6 +20,9 @@ return [
         'solutions' => [
             'cover_images' => ["storePath" => "solutions/cover_images/","readPath" => "/storage/solutions/cover_images/",'disk' => "public"],
         ],
+        'posts' => [
+            'posts' => ["storePath" => "posts/cover_images/","readPath" => "/storage/posts/cover_images/",'disk' => "public"],
+        ],
         'steps' => [
             'cover_images' => ["storePath" => "steps/cover_images/","readPath" => "/storage/steps/cover_images/",'disk' => "public"],
         ],

@@ -40,10 +40,9 @@ export const createEditProps = {
 
 export const useCreateEdit = (props, setData, form) => {
     onMounted(() => {
-        if(props.cardData != null && props.cardData.uuid != null){
-            setData();
-        }
+        setData();
     })
+
 
     const context = getCurrentInstance()?.appContext.config.globalProperties;
     function submit(){
@@ -90,7 +89,9 @@ export const useCreateEdit = (props, setData, form) => {
     function onFileChange(event,formVar,previewVar) {
         let files = event.target.files;
         if (files.length)
+            // console.log(formVar);
             form[formVar] = files[0];
+             console.log(form[formVar]);
             if(previewVar != ''){            
                 // i don't know what this is need more context    
                 // i assume you have set some data in consumer

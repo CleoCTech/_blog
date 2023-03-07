@@ -6,6 +6,8 @@ import DefaultFooter from '@/System/Partials/Footer.vue'
 import { ref, onMounted, getCurrentInstance } from 'vue'
 import {useNotify} from "@/Composables/useNotify";
 
+import { Icon } from '@iconify/vue';
+
 let {notification} = useNotify();
 
 const context = getCurrentInstance().appContext.config.globalProperties;
@@ -56,11 +58,14 @@ onMounted(() => {
                  :is-full-page="fullPage"/>
             <!--navbar-->
             <header class="z-50">
+                <!-- <Icon icon="mdi:arrow-left-circle" 
+                class="text-3xl bg-white text-gray-900 rounded-full sticky top-12 cursor-pointer" 
+                style="right: 105rem; z-index: 60;"/> -->
                 <navbar :title="setup.pageTitle"/>
             </header>
             <div class="relative sm:flex">
                 <!--sidebar-->
-                <section id="sidebar" class="w-60 sm:w-50 hidden sm:block absolute sm:relative sm:mt-12">
+                <section id="sidebar" class="w-60 sm:w-50 hidden sm:block absolute sm:relative sm:mt-12 z-50">
                     <admin-sidebar v-if="$page.props.auth.user.user_category == 100"/>
                 </section>
                 <!--main-->
