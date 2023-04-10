@@ -64,6 +64,7 @@ class HandleInertiaRequests extends Middleware
                 'company' => [
                     'name' => config('app.company')['name'],
                     'shortName' => config('app.company')['shortName'],
+                    'website' => config('app.company')['website'],
                 ],
                 'developer' => [
                     'name' => 'Wenla Systems',

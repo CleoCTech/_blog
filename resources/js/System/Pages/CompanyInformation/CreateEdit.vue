@@ -3,6 +3,7 @@
         <x-create-edit-template :setup="setup" :selected="selected">
             <form v-on:submit.prevent="submit" action="#" method="POST" enctype="multipart/form-data">
                 <x-grid>
+                    
                     <x-grid-col>
                         <x-form-group>
                             <template #label>Name</template>
@@ -154,7 +155,7 @@
                             <template #label>Logo</template>
                             <template #value>
                                 <img v-if="show_image == '' && form.logo != null" :src="$page.props.storagePaths[setup.settings.storageName].images.readPath+form.logo" class="h-20 w-20">
-                                <x-input type="file" @input="onFileChange($event,form.logo, show_image)" ref="input" class="shadow appearance-none border w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline disabled:opacity-40"/>
+                                <x-input type="file" @input="onFileChange($event,'logo', show_image)" ref="input" class="shadow appearance-none border w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline disabled:opacity-40"/>
                                 <img v-if="show_image != ''" :src="show_image" class="h-20 w-20">
                             </template>
                         </x-form-group>
@@ -203,29 +204,31 @@ const show_image = ref('')
 const show_image1 = ref('')
 
 function setData() {
-    form.uuid = props.cardData.uuid
-    form.name = props.cardData.company_name
-    form.shortName = props.cardData.short_name
-    form.establishmentDate = props.cardData.establishment_date
-    form.vision = props.cardData.vision
-    form.core_values = props.cardData.core_values
-    form.mission = props.cardData.mission
-    form.quality = props.cardData.quality
-    form.about_newsletter = props.cardData.about_newsletter
-    form.total_people_helped = props.cardData.total_people_helped
-    form.manager_name = props.cardData.manager_name
-    form.manager_custom_title = props.cardData.manager_custom_title
-    form.manager_image = props.cardData.manager_image
-    form.about_short = props.cardData.about_short
-    form.about = props.cardData.about
-    form.history = props.cardData.history
-    form.welcome_message = props.cardData.welcome_message
-    form.location = props.cardData.location
-    form.whatWeDo = props.cardData.what_we_do
-    form.emails = props.cardData.emails
-    form.phoneNumbers = props.cardData.phone_numbers
-    form.address = props.cardData.address
-    form.logo = props.cardData.logo
+    if (props.cardData != null && props.cardData.uuid != null) {
+        form.uuid = props.cardData.uuid
+        form.name = props.cardData.company_name
+        form.shortName = props.cardData.short_name
+        form.establishmentDate = props.cardData.establishment_date
+        form.vision = props.cardData.vision
+        form.core_values = props.cardData.core_values
+        form.mission = props.cardData.mission
+        form.quality = props.cardData.quality
+        form.about_newsletter = props.cardData.about_newsletter
+        form.total_people_helped = props.cardData.total_people_helped
+        form.manager_name = props.cardData.manager_name
+        form.manager_custom_title = props.cardData.manager_custom_title
+        form.manager_image = props.cardData.manager_image
+        form.about_short = props.cardData.about_short
+        form.about = props.cardData.about
+        form.history = props.cardData.history
+        form.welcome_message = props.cardData.welcome_message
+        form.location = props.cardData.location
+        form.whatWeDo = props.cardData.what_we_do
+        form.emails = props.cardData.emails
+        form.phoneNumbers = props.cardData.phone_numbers
+        form.address = props.cardData.address
+        form.logo = props.cardData.logo
+    }
 }
 
 const { editor,editorConfig, submit, onFileChange, ckeditor, xGrid,

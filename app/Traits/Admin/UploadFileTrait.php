@@ -20,9 +20,9 @@ trait UploadFileTrait
     }
     public function uploadFile($data)
     {
-        Log::info($data);
+        // Log::info($data);
         $storageName = explode('\\',$data['storageName']);
-        Log::info($storageName);
+        // Log::info($storageName);
         if(count($storageName) > 1){
             $path = config('app.storagePaths')[$storageName[0]][$storageName[1]]['storePath'];
             $disk = config('app.storagePaths')[$storageName[0]][$storageName[1]]['disk'];

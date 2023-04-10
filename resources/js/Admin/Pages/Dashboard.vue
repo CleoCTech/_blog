@@ -1,41 +1,67 @@
 <template>
     <Head title="Dashboard" />
-    <div class="container bg-gray-800 mx-auto sm:py-16 sm:px-4 rounded-lg bg-gray-800 shadow-md" >
-
-        <h4 v-cloak class="text-center text-gray-400 mb-4 text-xs sm:text-sm"><em>Hi {{$page.props.auth.user.name}}, welcome to {{$page.props.config.appName}}'s Portal Admin Dashboard</em></h4>
-       
-        <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-4 p-4">
-
-            
-            <h1 class="text-white" >Dashboard</h1>
-            <!-- <x-tile class="bg-red-500 border-red-700">
-                <template #icon><collection-icon class="icon-sm"/></template>
-                <template #value><x-loading v-if="isLoading"/><span v-if="!isLoading">{{statistics.totalIndustries}}</span></template>
-                <template #label><x-link href="/admin/industries" class="underline text-md">Total Industries</x-link></template>
-            </x-tile>
-            <x-tile class="bg-green-500 border-green-700">
-                <template #icon><collection-icon class="icon-sm"/></template>
-                <template #value><x-loading v-if="isLoading"/><span v-if="!isLoading">{{statistics.totalSolutions}}</span></template>
-                <template #label><x-link href="/admin/solution" class="underline text-md">Total Solutions</x-link></template>
-            </x-tile>
-            <x-tile class="bg-yellow-500 border-yellow-700">
-                <template #icon><badge-check-icon class="icon-sm"/></template>
-                <template #value><x-loading v-if="isLoading"/><span v-if="!isLoading">{{statistics.totalClients}}</span></template>
-                <template #label><x-link href="/admin/client" class="underline">Total Clients</x-link></template>
-            </x-tile>
-            <x-tile class="bg-gray-500 border-gray-700">
-                <template #icon><user-group-icon class="icon-sm"/></template>
-                <template #value><x-loading v-if="isLoading"/><span v-if="!isLoading">{{statistics.totalAdminUsers}}</span></template>
-                <template #label><x-link href="/system/admin-user" class="underline">Total Admin Users</x-link></template>
-            </x-tile>
-            <x-tile class="bg-pink-600 border-pink-700">
-                <template #icon><user-group-icon class="icon-sm"/></template>
-                <template #value><x-loading v-if="isLoading"/><span v-if="!isLoading">{{statistics.totalPublicUsers}}</span></template>
-                <template #label>Total Public Users</template>
-            </x-tile> -->
-
+    <div class="bg-gray-900 ml-3">
+        <h4 v-cloak class="text-center text-blue-500 mb-4 text-2xxl sm:text-sm pt-3 mt-3"><em>Hi {{$page.props.auth.user.name}}, welcome to {{$page.props.config.appName}}'s Portal Admin Dashboard</em></h4>
+        <Link :href="route('home')" class="text-blue-500 mb-10 text-2xxl text-center pt-3 mt-3 ml-10">
+            <h4 v-cloak class="text-center text-blue-500 mb-4 text-2xxl pt-3 mt-3 underline hover:no-underline"><em> Go back to blog [Home]</em></h4>
+        </Link>
+        <div  class="grid grid-cols-3 gap-4 bg-gray-900">
+            <div class="bg-gray-800 p-4 rounded-lg text-gray-300">
+                <h2 class="text-2xl font-bold mb-4">Pageviews</h2>
+                <p class="text-4xl font-bold ">{{statistics.totalViews}}</p>
+            </div>
+            <div v-if="$page.props.auth.user.user_category == 100" class="bg-gray-800 p-4 rounded-lg text-gray-300">
+                <h2 class="text-2xl font-bold mb-4">Unique visitors</h2>
+                <p class="text-4xl font-bold">5,000</p>
+            </div>
+            <div v-if="$page.props.auth.user.user_category == 100" class="bg-gray-800 p-4 rounded-lg text-gray-300">
+                <h2 class="text-2xl font-bold mb-4">Time on site</h2>
+                <p class="text-4xl font-bold">2:30</p>
+            </div>
+            <div v-if="$page.props.auth.user.user_category == 100" class="bg-gray-800 p-4 rounded-lg text-gray-300">
+                <h2 class="text-2xl font-bold mb-4">Bounce rate</h2>
+                <p class="text-4xl font-bold">25%</p>
+            </div>
+            <div v-if="$page.props.auth.user.user_category == 100" class="bg-gray-800 p-4 rounded-lg text-gray-300">
+                <h2 class="text-2xl font-bold mb-4">Referral sources</h2>
+                <ul class="list-disc list-inside">
+                <li>Google: 60%</li>
+                <li>Twitter: 20%</li>
+                <li>Facebook: 10%</li>
+                <li>Other: 10%</li>
+                </ul>
+            </div>
+            <div v-if="$page.props.auth.user.user_category == 100" class="bg-gray-800 p-4 rounded-lg text-gray-300">
+                <h2 class="text-2xl font-bold mb-4">Demographics</h2>
+                <ul class="list-disc list-inside">
+                <li>Age: 25-34</li>
+                <li>Gender: Female</li>
+                <li>Location: United States</li>
+                </ul>
+            </div>
+            <div v-if="$page.props.auth.user.user_category == 100" class="bg-gray-800 p-4 rounded-lg text-gray-300">
+                <h2 class="text-2xl font-bold mb-4">Conversion rates</h2>
+                <p class="text-4xl font-bold">5%</p>
+            </div>
+            <div class="bg-gray-800 p-4 rounded-lg text-gray-300">
+                <h2 class="text-2xl font-bold mb-4">Popular posts</h2>
+                <ol class="list-decimal list-inside">
+                <li>10 Ways to Increase Your Blog Traffic</li>
+                <li>The Importance of SEO for Your Blog</li>
+                <li>5 Tips for Writing Engaging Blog Posts</li>
+                </ol>
+            </div>
+            <div class="bg-gray-800 p-4 rounded-lg text-gray-300">
+                <h2 class="text-2xl font-bold mb-4">Engagement</h2>
+                <ul class="list-disc list-inside">
+                <li>Comments: 50</li>
+                <li>Shares: 100</li>
+                <li>Likes: 200</li>
+                </ul>
+            </div>
         </div>
-        <!-- <x-line-chart v-if="!isChartLoading" :chartData="chartsData.clientsChart" :maxHeight="'h-80'" :maxWidth="'w-full'"/> -->
+
+        <x-line-chart v-if="!isChartLoading" :chartData="chartsData.clientsChart" :maxHeight="'h-80'" :maxWidth="'w-full'"/>
     </div>
 </template>
 <script>
@@ -66,22 +92,36 @@
             //
         },
         mounted(){
+            this.getPageViews();
             // this.reload();
             // this.getStatistics();
             // this.getChartsData('all','monthly');
         },
-        updated() {
-            console.log('updated!');
-            this.reload();
-        },
+        // updated() {
+        //     console.log('updated!');
+        //     this.reload();
+        // },
 
         methods:{
-            reload(){
-                window.location.reload();
-            },
-            vnodeUpdated() {
-                console.log("vnodeUpdated")
-                window.location.reload();
+            // reload(){
+            //     window.location.reload();
+            // },
+            // vnodeUpdated() {
+            //     console.log("vnodeUpdated")
+            //     window.location.reload();
+            // },
+            getPageViews(){
+                this.isLoading = true;
+                var self = this;
+                axios.get('/admin/dashboard/statistics').then(response => {
+                    if(response.data != null){
+                        var statistics = response.data;
+                        self.statistics = statistics;
+                        this.isLoading = false;
+                    }
+                }).catch((error) => {
+                    console.log(error);
+                })
             }
             // getStatistics(){
             //     this.isLoading = true;

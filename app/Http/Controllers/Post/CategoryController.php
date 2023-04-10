@@ -64,6 +64,7 @@ class CategoryController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'description' => 'nullable',
+            'svg' => 'required',
             'sequence' => 'nullable',
             'status' => 'required',
             'publish_time' => 'nullable|required_if:status,=,3',
@@ -74,6 +75,7 @@ class CategoryController extends Controller
             $record = [
                 'title' => $request->title,
                 'description' => $request->description,
+                'svg' => $request->svg,
                 'status' => $request->status,
                 'sequence' => $request->sequence,
                 'publish_time' => $request->publish_time,

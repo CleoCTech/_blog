@@ -32,6 +32,9 @@ return [
         'sectionimages' => [
             'cover_images' => ["storePath" => "sectionimages/cover_images/","readPath" => "/storage/sectionimages/cover_images/",'disk' => "public"],
         ],
+        'adverts' => [
+            'cover_images' => ["storePath" => "adverts/cover_images/","readPath" => "/storage/adverts/cover_images/",'disk' => "public"],
+        ],
         'companyInfo' => [
             'images' => ["storePath" => "companyInfo/images/","readPath" => "/storage/companyInfo/images/",'disk' => "public"],
             'manager' => ["storePath" => "companyInfo/manager/","readPath" => "/storage/companyInfo/manager/",'disk' => "public"],
@@ -55,14 +58,20 @@ return [
         'name' => env('COMPANY_NAME'),
         'shortName' => env('COMPANY_SHORT_NAME'),
         'website' => env('APP_URL'),
+        'COMPANY_PASS' => 'adm1n#2023',
+        'COMPANY_USER' => 'DNS',
+        'COMPANY_EMAIL' => 'info@dailynotifications.com',
     ],
     'developer' => [
         'name' => env('DEV_COMPANY_NAME', 'Wenla Systems & Solutions Ltd.'),
         'shortName' => env('DEV_COMPANY_SHORT_NAME', ''),
         'website' => env('DEV_URL', 'http://wenlasystems.com/'),
+        'DEV_PASS' => '@dm1n321#',
+        'DEV_USER' => 'Wenla Systems',
+        'DEV_EMAIL' => 'admin@wenlasystems.com',
     ],
-    'metaDescription' => env('COMPANY_NAME')." is a travel agent website software with multiple booking engines (flights, hotels, activities) ...",
-    'metaKeywords' => 'travel agency, tour, tours, vacations, travel agencies in kenya, travel agency website, travel agency plartform, safaris, safaris kenya, adeventures, bornfire adventures',
+    'metaDescription' => env('COMPANY_NAME')." gives you an insightful articles on a variety of topics, from technology to lifestyle and everything in between. Join our community of avid readers and engage in thought-provoking discussions. Visit us today and stay informed, inspired, and entertained.",
+    'metaKeywords' => '',
     'serverType' => env('SERVER_TYPE'),
 
     

@@ -8,6 +8,7 @@ use App\Traits\Admin\SearchTrait;
 use App\Traits\Admin\ColumnsTrait;
 use App\Traits\Admin\UuidTrait;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Comment extends Model
 {
@@ -57,5 +58,9 @@ class Comment extends Model
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class, 'post_id', 'id');
+    }
+    public function replies(): HasMany
+    {
+        return $this->hasMany(Reply::class);
     }
 }

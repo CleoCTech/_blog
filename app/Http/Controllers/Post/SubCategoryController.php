@@ -69,6 +69,7 @@ class SubCategoryController extends Controller
             'description' => 'nullable',
             'sequence' => 'nullable',
             'kategories' => 'required',
+            'svg' => 'required',
             'status' => 'required',
             'publish_time' => 'nullable|required_if:status,=,3',
         ]);
@@ -80,6 +81,7 @@ class SubCategoryController extends Controller
             $record = [
                 'title' => $request->title,
                 'description' => $request->description,
+                'svg' => $request->svg,
                 'status' => $request->status,
                 'sequence' => $request->sequence,
                 'publish_time' => $request->publish_time,

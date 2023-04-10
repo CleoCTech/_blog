@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('uuid')->unique();
             $table->string('title');
             $table->string('featured_image');
-            $table->text('content');
+            $table->longText('content');
             $table->integer('views')->default(0);
             $table->integer('visibility');
             $table->integer("status");

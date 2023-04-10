@@ -109,6 +109,7 @@ class CompanyInformationController extends Controller
                 'welcome_message' => $request->welcome_message,
             ];
             if($request->hasFile('logo')){
+                info('has logo');
                 $record['logo'] = $fileName;
             }
             if($request->hasFile('manager_image')){
@@ -135,7 +136,7 @@ class CompanyInformationController extends Controller
             if($this->isCommit){
                 DB::Commit();
                 $response = $this->notification('success');
-                info($response);
+                // info($response);
                 return response()->json($response,200);
             }else{
                 DB::rollback();

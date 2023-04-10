@@ -2,6 +2,7 @@
 
 namespace App\Traits\Admin;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Schema;
@@ -27,18 +28,48 @@ trait LayoutTrait
         if(!$this->isSearch){
             if ($this->isReltionship) {
                 // Log::info('Yes, Relation');
-                $this->listData = $this->defaultModel::with($this->relationName)
-                ->orderBy(
-                    $this->settings['orderBy']['column'],
-                    $this->settings['orderBy']['order'])->paginate(config('app.maxRecsPerPage')
-                );
+                if ($this->defaultModel == '\App\Models\Post\Post') {
+                    // info('yes');
+                    if ((Auth::user()->user_category != 100)) {
+                        $this->listData = $this->defaultModel::with($this->relationName)
+                        ->where('user_id', Auth::user()->id)
+                        ->orderBy(
+                        $this->settings['orderBy']['column'],
+                        $this->settings['orderBy']['order'])->paginate(config('app.maxRecsPerPage'));
+                    } else {
+                        $this->listData = $this->defaultModel::with($this->relationName)
+                        ->orderBy(
+                            $this->settings['orderBy']['column'],
+                            $this->settings['orderBy']['order'])->paginate(config('app.maxRecsPerPage')
+                        );
+                    }
+
+                } else {
+
+                    $this->listData = $this->defaultModel::with($this->relationName)
+                    ->orderBy(
+                        $this->settings['orderBy']['column'],
+                        $this->settings['orderBy']['order'])->paginate(config('app.maxRecsPerPage')
+                    );
+                }
+                
                 // Log::info($this->listData);
             } else {
                 // Log::info('Not, Relation');
-                $this->listData = $this->defaultModel::orderBy(
+                if ($this->defaultModel == 'Post') {
+                    $this->listData = $this->defaultModel::with($this->relationName)
+                    ->where('user_id', Auth::user()->id)
+                    ->orderBy(
                     $this->settings['orderBy']['column'],
-                    $this->settings['orderBy']['order'])->paginate(config('app.maxRecsPerPage')
-                );
+                    $this->settings['orderBy']['order'])->paginate(config('app.maxRecsPerPage'));
+                } else {
+                    $this->listData = $this->defaultModel::orderBy(
+                        $this->settings['orderBy']['column'],
+                        $this->settings['orderBy']['order'])->paginate(config('app.maxRecsPerPage')
+                    );
+                }
+                
+                
                 // Log::info($this->listData);
             }
 

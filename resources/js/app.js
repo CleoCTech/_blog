@@ -8,6 +8,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { useNotification } from "@kyvg/vue3-notification";
 import { createPinia } from 'pinia';
+import VueSocialSharing from 'vue-social-sharing'
 
 import Notifications from '@kyvg/vue3-notification'
 // import { notify } from "@kyvg/vue3-notification";
@@ -64,6 +65,12 @@ createInertiaApp({
             .component('Link',Link)
             .use(ZiggyVue, Ziggy)
             .use(createPinia())
+            .use(VueSocialSharing, {
+                //add custom network
+                networks: {
+                    linkedin: 'https://linkedin.com/share?url=@url&title=@title'
+                }
+            })
             .mount(el);
     },
 });

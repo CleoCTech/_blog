@@ -51,6 +51,12 @@
                             <template #value><x-input type="datetime-local" v-model="form.publish_time"/></template>
                         </x-form-group>
                     </x-grid-col>
+                    <x-grid-col class="col-span-3">
+                        <x-form-group>
+                            <template #label>SVG</template>
+                            <template #value><x-input type="text" v-model="form.svg"/></template>
+                        </x-form-group>
+                    </x-grid-col>
                 </x-grid>
                 <div class="flex justify-center py-2">
                     <!-- <button type="button" class="btn btn-primary text-white border-2 rounded-lg mr-2" v-on:click="greet(5,9)">Click me</button> -->
@@ -72,6 +78,7 @@
         uuid: null,
         title: null,
         description: null,
+        svg: null,
         status: null,
         publish_time: null,
         categories: [],
@@ -85,6 +92,7 @@
             form.uuid = props.cardData.uuid;
             form.title = props.cardData.title;
             form.description = props.cardData.description;
+            form.svg = props.cardData.svg;
             form.status = props.cardData.status;
             form.publish_time = props.cardData.publish_time2;
 

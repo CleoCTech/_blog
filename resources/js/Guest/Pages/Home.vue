@@ -3,320 +3,160 @@
     <title>Home</title>
   </Head>
    <!-- Header -->
-  <header class="pl-4 md:pl-0 h-64 bg-gray-800 bg-center bg-cover"
-    style="background-image: url('https://picsum.photos/id/10/2500/1667'); min-height: 500px;">
-    <div class="container mx-auto h-full flex items-center justify-center">
-      <div class="text-start w-full">
-        <p class="text-xs font-bold tracking-wide text-gray-200">Published in <span class="text-white">World News</span>
-        </p>
-        <h1 class="text-4xl font-bold text-white mb-2">Flowbite Blocks Tutorial - Learn how to get started with custom
-          sections using the Flowbite Blocks</h1>
-        <p class="text-xl text-lg text-gray-100 mb-8">Before going digital, you might scribbling down some ideas in a
-          sketchbook.</p>
-        <!-- <p class="text-xs font-bold uppercase tracking-wide text-gray-400">Published in January 2021</p> -->
-      </div>
-    </div>
-  </header>
+  <!-- Hero -->
+  <div class="relative overflow-hidden">
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24">
+      <div class="text-center">
+        <h1 class="text-4xl sm:text-6xl font-bold text-gray-800 dark:text-gray-200">
+          Insights
+        </h1>
 
-  <!-- Main content -->
-  <div class="container mx-auto sm:py-16 sm:px-4 rounded-lg bg-gray-800 shadow-md" style="margin-top: -5rem;">
-    <div class="relative">
-      <div class="flex">
-        <div class="w-3/3 md:w-2/3 px-4 py-8">
-          <div class="flex items-center justify-between mb-4">
-            <div class="text-gray-700 text-sm font-semibold tracking-wide">
-              <span class="text-gray-400">By <a href="http://" class="text-white">Article Writer</a> </span>
-              <span class="mx-2">|</span>
-              <span class="text-gray-400">August 3, 2022, 2:20am EDT</span>
-            </div>
-            <div class="flex items-center text-gray-700 text-sm font-semibold tracking-wide">
-              <!-- Social media links and icons -->
-              <a href="#" class="mr-3 text-gray-400">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="mr-3 text-gray-400">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="mr-3 text-gray-400">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-              <!-- Copy link icon -->
-              <a href="#" class="mr-3 text-gray-400">
-                <i class="fas fa-link"></i>
-              </a>
-              <!-- Save article icon -->
-              <a href="#" class="mr-3 text-gray-400">
-                <i class="fas fa-bookmark"></i>
-              </a>
-              <!-- Three dotted menu -->
-              <div class="relative inline-block">
-                <button class="text-gray-400 hover:text-gray-800 focus:outline-none">
-                  <i class="fas fa-ellipsis-v"></i>
-                </button>
-                <!-- <ul class="absolute right-0 w-48 py-2 mt-2 rounded-lg bg-gray-900 shadow-md">
-                    <li><a href="#" class="block px-4 py-2 text-gray-400 hover:bg-gray-800 hover:text-white">Menu item 1</a></li>
-                    <li><a href="#" class="block px-4 py-2 text-gray-400 hover:bg-gray-800 hover:text-white">Menu item 2</a></li>
-                  </ul> -->
+        <x-swiper :slidesPerView="1">
+          <swiper-slide v-for="(qoute,index) in qoutes" :key="index">
+            
+            <!-- <p class="mt-3 text-gray-600 dark:text-gray-400" >
+              <svg class="absolute top-0 left-0 transform -translate-x-6 -translate-y-8 h-16 w-16 text-gray-100 dark:text-gray-700" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M7.39762 10.3C7.39762 11.0733 7.14888 11.7 6.6514 12.18C6.15392 12.6333 5.52552 12.86 4.76621 12.86C3.84979 12.86 3.09047 12.5533 2.48825 11.94C1.91222 11.3266 1.62421 10.4467 1.62421 9.29999C1.62421 8.07332 1.96459 6.87332 2.64535 5.69999C3.35231 4.49999 4.33418 3.55332 5.59098 2.85999L6.4943 4.25999C5.81354 4.73999 5.26369 5.27332 4.84476 5.85999C4.45201 6.44666 4.19017 7.12666 4.05926 7.89999C4.29491 7.79332 4.56983 7.73999 4.88403 7.73999C5.61716 7.73999 6.21938 7.97999 6.69067 8.45999C7.16197 8.93999 7.39762 9.55333 7.39762 10.3ZM14.6242 10.3C14.6242 11.0733 14.3755 11.7 13.878 12.18C13.3805 12.6333 12.7521 12.86 11.9928 12.86C11.0764 12.86 10.3171 12.5533 9.71484 11.94C9.13881 11.3266 8.85079 10.4467 8.85079 9.29999C8.85079 8.07332 9.19117 6.87332 9.87194 5.69999C10.5789 4.49999 11.5608 3.55332 12.8176 2.85999L13.7209 4.25999C13.0401 4.73999 12.4903 5.27332 12.0713 5.85999C11.6786 6.44666 11.4168 7.12666 11.2858 7.89999C11.5215 7.79332 11.7964 7.73999 12.1106 7.73999C12.8437 7.73999 13.446 7.97999 13.9173 8.45999C14.3886 8.93999 14.6242 9.55333 14.6242 10.3Z" fill="currentColor"/>
+              </svg>
+              {{qoute.quote}}
+            </p>
+            <p class="mt-3 text-gray-600 dark:text-gray-400" >~ {{ qoute.author }}</p> -->
+
+            <blockquote class="relative">
+              <svg class="absolute top-0 left-0 transform -translate-x-6 -translate-y-8 h-16 w-16 text-gray-100 dark:text-gray-700" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M7.39762 10.3C7.39762 11.0733 7.14888 11.7 6.6514 12.18C6.15392 12.6333 5.52552 12.86 4.76621 12.86C3.84979 12.86 3.09047 12.5533 2.48825 11.94C1.91222 11.3266 1.62421 10.4467 1.62421 9.29999C1.62421 8.07332 1.96459 6.87332 2.64535 5.69999C3.35231 4.49999 4.33418 3.55332 5.59098 2.85999L6.4943 4.25999C5.81354 4.73999 5.26369 5.27332 4.84476 5.85999C4.45201 6.44666 4.19017 7.12666 4.05926 7.89999C4.29491 7.79332 4.56983 7.73999 4.88403 7.73999C5.61716 7.73999 6.21938 7.97999 6.69067 8.45999C7.16197 8.93999 7.39762 9.55333 7.39762 10.3ZM14.6242 10.3C14.6242 11.0733 14.3755 11.7 13.878 12.18C13.3805 12.6333 12.7521 12.86 11.9928 12.86C11.0764 12.86 10.3171 12.5533 9.71484 11.94C9.13881 11.3266 8.85079 10.4467 8.85079 9.29999C8.85079 8.07332 9.19117 6.87332 9.87194 5.69999C10.5789 4.49999 11.5608 3.55332 12.8176 2.85999L13.7209 4.25999C13.0401 4.73999 12.4903 5.27332 12.0713 5.85999C11.6786 6.44666 11.4168 7.12666 11.2858 7.89999C11.5215 7.79332 11.7964 7.73999 12.1106 7.73999C12.8437 7.73999 13.446 7.97999 13.9173 8.45999C14.3886 8.93999 14.6242 9.55333 14.6242 10.3Z" fill="currentColor"/>
+              </svg>
+
+              <div class="relative z-10 mt-3">
+                <p class="text-gray-800 sm:text-xl dark:text-white">
+                  <em>
+                    {{qoute.quote}}</em>
+                </p>
+                <p class="text-gray-800 sm:text-xl dark:text-white">
+                  <em>
+                    ~ {{ qoute.author }}</em>
+                </p>
+              </div>
+            </blockquote>
+          </swiper-slide>
+        </x-swiper>
+        
+
+        <div class="mt-7 sm:mt-12 mx-auto max-w-xl relative">
+          <!-- Form -->
+          <form>
+            <div class="relative z-10 flex space-x-3 p-3 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-900/[.2]">
+              <div class="flex-[1_0_0%]">
+                <label for="hs-search-article-1" class="block text-sm text-gray-700 font-medium dark:text-white"><span class="sr-only">Search article</span></label>
+                <input type="email" name="hs-search-article-1" id="hs-search-article-1" class="p-3 block w-full border-transparent rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-400" placeholder="Search article">
+              </div>
+              <div class="flex-[0_0_auto]">
+                <a class="p-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800" href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg>
+                </a>
               </div>
             </div>
+          </form>
+          <!-- End Form -->
+
+          <!-- SVG Element -->
+          <div class="hidden md:block absolute top-0 right-0 -translate-y-12 translate-x-20">
+            <svg class="w-16 h-auto text-orange-500" width="121" height="135" viewBox="0 0 121 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 16.4754C11.7688 27.4499 21.2452 57.3224 5 89.0164" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+              <path d="M33.6761 112.104C44.6984 98.1239 74.2618 57.6776 83.4821 5" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+              <path d="M50.5525 130C68.2064 127.495 110.731 117.541 116 78.0874" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+            </svg>
           </div>
-          <article class="bg-gray-800 rounded-lg shadow-md p-8">
-            <h2 class="text-2xl font-bold text-gray-100 mb-4">Article Title</h2>
-            <img class="w-full rounded-lg shadow-md mb-4" src="https://picsum.photos/id/10/2500/1667"
-              alt="Article Image">
-            <p class="text-lg text-gray-400 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget
-              ligula a elit aliquam vehicula. Etiam nec condimentum purus. Donec ut arcu in quam fermentum ultricies eu
-              ac nisi. Proin sed dolor at neque vehicula efficitur. Aliquam at ornare diam, eget egestas diam. Duis
-              volutpat diam quis ipsum placerat, vel interdum nunc pretium. Mauris eu magna metus. Nam in erat a metus
-              consectetur placerat. Nullam tempus, tortor sed pharetra auctor, quam eros consectetur nulla, quis tempus
-              arcu est in tellus.</p>
-            <p class="text-lg text-gray-400 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget
-              ligula a elit aliquam vehicula. Etiam nec condimentum purus. Donec ut arcu in quam fermentum ultricies eu
-              ac nisi. Proin sed dolor at neque vehicula efficitur. Aliquam at ornare diam, eget egestas diam. Duis
-              volutpat diam quis ipsum placerat, vel interdum nunc pretium. Mauris eu magna metus. Nam in erat a metus
-              consectetur placerat. Nullam tempus, tortor sed pharetra auctor, quam eros consectetur nulla, quis tempus
-              arcu est in tellus.</p>
+          <!-- End SVG Element -->
 
-            <p class="text-lg text-gray-400 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget
-              ligula a elit aliquam vehicula. Etiam nec condimentum purus. Donec ut arcu in quam fermentum ultricies eu
-              ac nisi. Proin sed dolor at neque vehicula efficitur. Aliquam at ornare diam, eget egestas diam. Duis
-              volutpat diam quis ipsum placerat, vel interdum nunc pretium. Mauris eu magna metus. Nam in erat a metus
-              consectetur placerat. Nullam tempus, tortor sed pharetra auctor, quam eros consectetur nulla, quis tempus
-              arcu est in tellus.</p>
-
-            <p class="text-lg text-gray-400 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget
-              ligula a elit aliquam vehicula. Etiam nec condimentum purus. Donec ut arcu in quam fermentum ultricies eu
-              ac nisi. Proin sed dolor at neque vehicula efficitur. Aliquam at ornare diam, eget egestas diam. Duis
-              volutpat diam quis ipsum placerat, vel interdum nunc pretium. Mauris eu magna metus. Nam in erat a metus
-              consectetur placerat. Nullam tempus, tortor sed pharetra auctor, quam eros consectetur nulla, quis tempus
-              arcu est in tellus.</p>
-
-            <p class="text-lg text-gray-400 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget
-              ligula a elit aliquam vehicula. Etiam nec condimentum purus. Donec ut arcu in quam fermentum ultricies eu
-              ac nisi. Proin sed dolor at neque vehicula efficitur. Aliquam at ornare diam, eget egestas diam. Duis
-              volutpat diam quis ipsum placerat, vel interdum nunc pretium. Mauris eu magna metus. Nam in erat a metus
-              consectetur placerat. Nullam tempus, tortor sed pharetra auctor, quam eros consectetur nulla, quis tempus
-              arcu est in tellus.</p>
-
-            <p class="text-lg text-gray-400 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget
-              ligula a elit aliquam vehicula. Etiam nec condimentum purus. Donec ut arcu in quam fermentum ultricies eu
-              ac nisi. Proin sed dolor at neque vehicula efficitur. Aliquam at ornare diam, eget egestas diam. Duis
-              volutpat diam quis ipsum placerat, vel interdum nunc pretium. Mauris eu magna metus. Nam in erat a metus
-              consectetur placerat. Nullam tempus, tortor sed pharetra auctor, quam eros consectetur nulla, quis tempus
-              arcu est in tellus.</p>
-
-            <p class="text-lg text-gray-400 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget
-              ligula a elit aliquam vehicula. Etiam nec condimentum purus. Donec ut arcu in quam fermentum ultricies eu
-              ac nisi. Proin sed dolor at neque vehicula efficitur. Aliquam at ornare diam, eget egestas diam. Duis
-              volutpat diam quis ipsum placerat, vel interdum nunc pretium. Mauris eu magna metus. Nam in erat a metus
-              consectetur placerat. Nullam tempus, tortor sed pharetra auctor, quam eros consectetur nulla, quis tempus
-              arcu est in tellus.</p>
-
-            <p class="text-lg text-gray-400 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget
-              ligula a elit aliquam vehicula. Etiam nec condimentum purus. Donec ut arcu in quam fermentum ultricies eu
-              ac nisi. Proin sed dolor at neque vehicula efficitur. Aliquam at ornare diam, eget egestas diam. Duis
-              volutpat diam quis ipsum placerat, vel interdum nunc pretium. Mauris eu magna metus. Nam in erat a metus
-              consectetur placerat. Nullam tempus, tortor sed pharetra auctor, quam eros consectetur nulla, quis tempus
-              arcu est in tellus.</p>
-
-
-          </article>
-          <div class="bg-gray-800 py-4 px-6 mb-4">
-            <h3 class="text-xl text-white font-bold mb-2">Comment section</h3>
-            <form>
-              <label class="block mb-2 font-bold text-gray-400" for="comment">Leave a comment:</label>
-              <textarea class="w-full p-2 border-solid border-2 border-sky-500  rounded-lg text-white bg-gray-800"
-                name="comment" id="comment" rows="4"></textarea>
-                <button
-                    class="px-4 py-2 mt-4 bg-gray-800 rounded-lg shadow-md text-gray-400 
-                    border-2 border-gray-700 font-semibold 
-                    hover:bg-gray-700 hover:text-white 
-                    focus:bg-gray-700 focus:text-white 
-                    transition duration-150 ease-in-out">
-                    Submit
-                </button>
-            </form>
+          <!-- SVG Element -->
+          <div class="hidden md:block absolute bottom-0 left-0 translate-y-10 -translate-x-32">
+            <svg class="w-40 h-auto text-cyan-500" width="347" height="188" viewBox="0 0 347 188" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 82.4591C54.7956 92.8751 30.9771 162.782 68.2065 181.385C112.642 203.59 127.943 78.57 122.161 25.5053C120.504 2.2376 93.4028 -8.11128 89.7468 25.5053C85.8633 61.2125 130.186 199.678 180.982 146.248L214.898 107.02C224.322 95.4118 242.9 79.2851 258.6 107.02C274.299 134.754 299.315 125.589 309.861 117.539L343 93.4426" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+            </svg>
           </div>
+          <!-- End SVG Element -->
         </div>
-        <div class="hidden md:w-1/3 px-4 py-8 md:flex">
-          <div class="sticky top-32 bottom-0">
-            <h3 class="text-xl font-bold text-gray-100 mb-4">Latest Articles</h3>
-            <ul class="list-reset">
-              <li class="flex items-stretch mb-8">
-                <div class="bg-gray-800 rounded-lg shadow-lg p-1">
-                  <div class="flex items-center">
-                    <!-- Image -->
-                    <img class="w-28 h-28 rounded-lg shadow-md mr-8" src="https://picsum.photos/id/10/2500/1667"
-                      alt="Article Image">
-                    <!-- Text -->
-                    <div class="text-gray-100">
-                      <h3 class="text-xl font-bold mb-4">Article Title</h3>
-                      <p class="text-gray-400 mb-4">Brief description of the article</p>
-                      <a class="text-blue-500 font-bold py-2 px-0 underline  hover:no-underline" href="#">Read in 9
-                        minutes</a>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="flex items-stretch mb-8">
-                <div class="bg-gray-800 rounded-lg shadow-lg p-1">
-                  <div class="flex items-center">
-                    <!-- Image -->
-                    <img class="w-28 h-28 rounded-lg shadow-md mr-8" src="https://picsum.photos/id/10/2500/1667"
-                      alt="Article Image">
-                    <!-- Text -->
-                    <div class="text-gray-100">
-                      <h3 class="text-xl font-bold mb-4">Enterprise Design tips</h3>
-                      <p class="text-gray-400 mb-4">Over the past year, Volosoft has undergone changes.</p>
-                      <a class="text-blue-500 font-bold py-2 px-0 underline  hover:no-underline" href="#">Read in 9
-                        minutes</a>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="flex items-stretch mb-8">
-                <div class="bg-gray-800 rounded-lg shadow-lg p-1">
-                  <div class="flex items-center">
-                    <!-- Image -->
-                    <img class="w-28 h-28 rounded-lg shadow-md mr-8" src="https://picsum.photos/id/10/2500/1667"
-                      alt="Article Image">
-                    <!-- Text -->
-                    <div class="text-gray-100">
-                      <h3 class="text-xl font-bold mb-4">Partnered up with Google</h3>
-                      <p class="text-gray-400 mb-4">Over the past year, Volosoft has undergone changes.</p>
-                      <a class="text-blue-500 font-bold py-2 px-0 underline  hover:no-underline" href="#">Read in 9
-                        minutes</a>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-            <div class="grid grid-cols-1 gap-4 ">
-              <div class="relative bg-gray-800 rounded-lg overflow-hidden">
-                <img class="object-cover h-64 w-full" src="https://picsum.photos/id/10/2500/1667" alt="Card Image">
-                <div class="p-4">
-                  <h3 class="text-lg font-medium text-white">Advertismnet</h3>
-                  <p class="text-gray-400">Some additional information about the card.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
+        
       </div>
     </div>
   </div>
-
-
-  <!-- Container -->
-  <div class="container mx-auto py-8 pl-5 sm:pl-0 bg-gray-900">
-    <h3 class="text-xl font-bold text-gray-100 mb-4">Related Articles</h3>
-  </div>
-  <div class="container mx-auto py-8  bg-gray-900">
-    <div class="grid grid-cols-1 px-4 md:grid-cols-2 sm:px-0 gap-4 ">
-      <!-- Column 1 -->
-      <div class="col-span-1">
-        <!-- Card 1 -->
-        <div class="bg-gray-900 rounded-lg shadow-lg p-1">
-          <div class="flex items-center">
-            <!-- Image -->
-            <img class="w-32 h-32 md:w-44 h-44 rounded-lg shadow-md mr-8" src="https://picsum.photos/id/10/2500/1667"
-              alt="Article Image">
-            <!-- Text -->
-            <div class="text-gray-100">
-              <h3 class="text-xl font-bold mb-4"> Enterprise design tips</h3>
-              <p class="text-gray-400 mb-4">Over the past year, Volosoft has undergone many changes! After months of
-                preparation.</p>
-              <a class="text-blue-500 font-bold py-2 px-0 underline  hover:no-underline" href="#">Read in 9 minutes</a>
+  <!-- End Hero -->
+  <div class="container mx-auto flex flex-wrap py-6">
+    <section class="w-full md:w-2/3 flex flex-col items-center px-4">
+      <!-- Card Blog -->
+      <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <!-- Grid -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Link v-for="(tour, index) in posts.data" :key="index" class="group rounded-xl overflow-hidden" :href="'/post/'+tour.title.replace(/ /g,'-').toLowerCase()">
+            <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
+              <img class="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" :src="'/storage/posts/cover_images/'+tour.featured_image" alt="Image Description">
+              <span class="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
+                <!-- Sponsored -->
+              </span>
             </div>
-          </div>
+
+            <div class="mt-7">
+              <Link  :href="'/post/'+tour.title.replace(/ /g,'-').toLowerCase()" class="rounded-lg hover:opacity-75">
+                <h3 class="text-xl font-semibold text-gray-800 group-hover:text-gray-600 dark:text-gray-200">
+                  {{ tour.title}}
+                </h3>
+              </Link>
+              <p class="mt-3 text-gray-800 dark:text-gray-200" v-html="tour.content.length > 100? tour.content.substring(0,100)+'...':tour.content">
+              </p>
+              <Link :href="'/post/'+tour.title.replace(/ /g,'-').toLowerCase()">
+                <p class="mt-5 inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 group-hover:underline font-medium">
+                  Read more
+                  <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </p>
+              </Link>
+            </div>
+          </Link>
         </div>
       </div>
-      <!-- Column 2 -->
-      <div class="col-span-1">
-        <!-- Card 2 -->
-        <div class="bg-gray-900 rounded-lg shadow-lg p-1">
-          <div class="flex items-center">
-            <!-- Image -->
-            <img class="w-32 h-32 md:w-44 h-44 rounded-lg shadow-md mr-8" src="https://picsum.photos/id/10/2500/1667"
-              alt="Article Image">
-            <!-- Text -->
-            <div class="text-gray-100">
-              <h3 class="text-xl font-bold mb-4">Article Title</h3>
-              <p class="text-gray-400 mb-4">Brief description of the article</p>
-              <a class="text-blue-500 font-bold py-2 px-0 underline  hover:no-underline" href="#">Read in 9 minutes</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="container mx-auto py-8 bg-gray-900">
-    <div class="grid grid-cols-1 px-4 md:grid-cols-2 sm:px-0 gap-4 ">
-      <!-- Column 1 -->
-      <div class="col-span-1">
-        <!-- Card 1 -->
-        <div class="bg-gray-900 rounded-lg shadow-lg p-1">
-          <div class="flex items-center">
-            <!-- Image -->
-            <img class="w-32 h-32 md:w-44 h-44 rounded-lg shadow-md mr-8" src="https://picsum.photos/id/10/2500/1667"
-              alt="Article Image">
-            <!-- Text -->
-            <div class="text-gray-100">
-              <h3 class="text-xl font-bold mb-4">Article Title</h3>
-              <p class="text-gray-400 mb-4">Brief description of the article</p>
-              <a class="text-blue-500 font-bold py-2 px-0 underline  hover:no-underline" href="#">Read in 9 minutes</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Column 2 -->
-      <div class="col-span-1">
-        <!-- Card 2 -->
-        <div class="bg-gray-900 rounded-lg shadow-lg p-1">
-          <div class="flex items-center">
-            <!-- Image -->
-            <img class="w-32 h-32 md:w-44 h-44 rounded-lg shadow-md mr-8" src="https://picsum.photos/id/10/2500/1667"
-              alt="Article Image">
-            <!-- Text -->
-            <div class="text-gray-100">
-              <h3 class="text-xl font-bold mb-4">Article Title</h3>
-              <p class="text-gray-400 mb-4">Brief description of the article</p>
-              <a class="text-blue-500 font-bold py-2 px-0 underline  hover:no-underline" href="#">Read in 9 minutes</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+      <div class="flex items-center py-8">
+          <Component 
+          :is="link.url ? 'Link' : 'span'"
+          v-for="link in posts.links"
+          :href="link.url"
+          v-html="link.label" 
+          class="px-1 "
+          :class="{'text-gray-500' : !link.url, 'h-10 w-10 bg-blue hover:bg-blue-dark font-semibold text-white text-sm flex items-center justify-center' :link.active}"
 
-  <!-- Container -->
-  <div class="w-full py-16 text-center bg-gray-800">
-    <!-- Title -->
-    <h2 class="text-2xl font-bold text-white mb-4">Sign up for our newsletter</h2>
-    <div class="max-w-2xl mx-auto ">
-      <p class="text-gray-400 mb-4">Stay up to date with the roadmap progress, announcements and exclusive discounts
-        feel free to sign up with your email.</p>
-    </div>
-    <!-- Email input and button -->
-    <div class="flex items-center justify-center">
-      <input type="email" class="w-64 px-3 py-2 rounded-lg shadow-md mr-2" placeholder="Enter your email address">
-
-      <button
-            class="px-4 py-2 bg-gray-800 rounded-lg shadow-md text-gray-400 
-            border-2 border-gray-700 font-semibold 
-            hover:bg-gray-700 hover:text-white 
-            focus:bg-gray-700 focus:text-white 
-            transition duration-150 ease-in-out">
-            Subscribe
-      </button>
-     
-    </div>
+          />
+          
+      </div>
+    </section>
+    
+    <Aside :adverts ="adverts" :popularPosts="popularPosts"/>
+   
   </div>
+  <Subscribe />
 
 </template>
 
 <script setup>
-  // import { Head } from '@inertiajs/inertia-vue3';
+import {ref, onMounted} from 'vue'
+import { SwiperSlide } from 'swiper/vue';
+import xSwiper from '@/Components/Swiper.vue'
+import Aside from '@/Guest/Partials/Aside.vue';
+import Subscribe from '@/Guest/Partials/Subscribe.vue';
+
+
+const loading = ref(true);
+
+const props = defineProps({
+    posts: Object,
+    adverts: Object,
+    popularPosts:Object,
+    companyInfo:Object,
+    qoutes:Object,
+});
 
 </script>

@@ -58,11 +58,13 @@
     const show_image = ref('')
 
     function setData(){
-        form.uuid = props.cardData.uuid;
-        form.name = props.cardData.name;
-        form.link = props.cardData.link;
-        form.status = props.cardData.status;
-        form.publish_time = props.cardData.publish_time2;
+        if (props.cardData != null && props.cardData.uuid != null) {
+            form.uuid = props.cardData.uuid;
+            form.name = props.cardData.name;
+            form.link = props.cardData.link;
+            form.status = props.cardData.status;
+            form.publish_time = props.cardData.publish_time2;
+        }
     }
     
     const { editor,editorConfig, submit, onFileChange, ckeditor, xGrid,

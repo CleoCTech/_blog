@@ -49,7 +49,7 @@ class PostController extends Controller
     ];
     public function __construct(){
         $this->middleware('gen-auth');
-        $this->middleware('admin-auth');
+        // $this->middleware('admin-auth');
         $this->defaultModel = $this->settings['model'];
         $this->isReltionship = $this->settings['isReltionship'];
         $this->relationName = $this->settings['relationName'];
@@ -89,19 +89,30 @@ class PostController extends Controller
             'publish_time' => 'nullable|required_if:status,=,3',
         ]);
         
+        //check if title has hyphene
+        $title = str_replace('-',' ',$request->title);
+        $title = str_replace(':',' ',$request->title);
         DB::beginTransaction();
         try{
             if($request->hasFile('featured_image')){
                 $fileName = $this->generateFileName($request->file('featured_image'));
             }
             $this->pKey = $request->uuid == 'null'? null:$request->uuid;
+            if ((Auth::user()->user_category != 100)) {
+                $status = 1;
+                $visibility = 2;
+            } else {
+                $status = $request->status;
+                $visibility = $request->visibility;
+            }
+            
             $record = [
-                'title' => $request->title,
+                'title' => $title,
                 'content' => $request->content,
                 'featured_image' => $request->featured_image,
-                'user_id' => Auth::user()->id,
-                'status' => $request->status,
-                'visibility' => $request->visibility,
+                // 'user_id' => Auth::user()->id,
+                'status' => $status,
+                'visibility' => $visibility,
                 'sequence' => $request->sequence,
                 'publish_time' => $request->publish_time,
             ];
@@ -113,6 +124,7 @@ class PostController extends Controller
             }
             if($this->pKey == null){
                 $record['created_by'] = Auth::user()->email;
+                $record['user_id'] = Auth::user()->id;                
             }else{
                 $record['updated_by'] = Auth::user()->email;
             }
@@ -147,7 +159,8 @@ class PostController extends Controller
                     'created_by' =>Auth::user()->email,
                 ]);
             }
-            if ($request->has('tagss')) {
+            if ($request->tagss !=null) {
+                info($request->tagss);
                 TagPost::where('post_id', $return_value->id)->delete();
                 $string = $request->tagss;
                 $tags = explode(",", $string);

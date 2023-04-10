@@ -21,7 +21,11 @@
         <ul class="ml-0.5 space-y-2 border-l-2 border-slate-100 dark:border-slate-800" data-hs-scrollspy="#scrollspy">
             <sidebar-link :href="route('admin.dashboard')" :active="$page.url == '/admin/dashboard'" class="cursor-pointer uppercase"><Icon icon="mdi:home" class="inline-block text-3xl -pt-3 -top-1"/> Home</sidebar-link>
             <sidebar-link :href="route('system.company')" :active="$page.url == '/system/company-information'" class="cursor-pointer uppercase"> <Icon icon="mdi:account-box-multiple-outline" class="inline-block text-2xl mr-1"/>Company Information</sidebar-link>
+            <sidebar-link :href="route('system.users')" :active="$page.url == '/system/users'" class="cursor-pointer uppercase"> <Icon icon="mdi:account-supervisor-outline" class="inline-block text-2xl mr-1"/>Users</sidebar-link>
             <sidebar-link :href="route('system.social')" :active="$page.url == '/system/social-media'" class="cursor-pointer uppercase "><Icon icon="mdi:transit-connection-horizontal" class="inline-block text-2xl mr-1 "/>Social Media</sidebar-link>
+            <sidebar-link :href="route('system.product')" :active="$page.url == '/system/product'" class="cursor-pointer uppercase "><Icon icon="mdi:package-variant-closed-minus" class="inline-block text-2xl mr-1 "/>Product</sidebar-link>
+            <sidebar-link :href="route('system.advert')" :active="$page.url == '/system/advert'" class="cursor-pointer uppercase "><Icon icon="mdi:advertisements" class="inline-block text-2xl mr-1 "/>Advert</sidebar-link>
+            <sidebar-link :href="route('admin.qoute')" :active="$page.url == '/admin/qoute'" class="cursor-pointer uppercase "><Icon icon="mdi:format-quote-open-outline" class="inline-block text-2xl mr-1 "/>Qoute</sidebar-link>
           
         </ul>
         <ul 

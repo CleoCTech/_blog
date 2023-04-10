@@ -83,3 +83,21 @@
     },
   };
 </script>
+<style>
+.swiper-container:hover .swiper-button-prev,
+.swiper-container:hover .swiper-button-next {
+  opacity: 1;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.swiper-button-prev:hover {
+  opacity: 1;
+}
+.swiper-button-next:hover {
+  opacity: 1;
+}
+</style>

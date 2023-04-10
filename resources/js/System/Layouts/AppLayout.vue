@@ -1,6 +1,7 @@
 <script setup>
 import Navbar from '@/Admin/Partials/Navbar.vue'
 import AdminSidebar from '@/Admin/Partials/Sidebar.vue'
+import GuestSidebar from '@/Admin/Partials/GuestSidebar.vue'
 import { usePage } from '@inertiajs/inertia-vue3'
 import DefaultFooter from '@/System/Partials/Footer.vue'
 import { ref, onMounted, getCurrentInstance } from 'vue'
@@ -67,6 +68,7 @@ onMounted(() => {
                 <!--sidebar-->
                 <section id="sidebar" class="w-60 sm:w-50 hidden sm:block absolute sm:relative sm:mt-12 z-50">
                     <admin-sidebar v-if="$page.props.auth.user.user_category == 100"/>
+                    <GuestSidebar v-else />
                 </section>
                 <!--main-->
                 <main class="font-sans text-gray-900 antialiased whitespacex-pre-line container mt-12" id="mainSection">

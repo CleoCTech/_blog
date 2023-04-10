@@ -15,6 +15,12 @@
                             <template #value><x-input type="text" v-model="form.description"/></template>
                         </x-form-group>
                     </x-grid-col>
+                    <x-grid-col class="col-span-2">
+                        <x-form-group>
+                            <template #label>SVG</template>
+                            <template #value><x-input type="text" v-model="form.svg"/></template>
+                        </x-form-group>
+                    </x-grid-col>
                     <x-grid-col>
                         <x-form-group>
                             <template #label>Status</template>
@@ -50,6 +56,7 @@
         uuid: null,
         title: null,
         description: null,
+        svg: null,
         status: null,
         publish_time: null,
     })
@@ -61,6 +68,7 @@
             form.uuid = props.cardData.uuid;
             form.title = props.cardData.title;
             form.description = props.cardData.description;
+            form.svg = props.cardData.svg;
             form.status = props.cardData.status;
             form.publish_time = props.cardData.publish_time2;
         }

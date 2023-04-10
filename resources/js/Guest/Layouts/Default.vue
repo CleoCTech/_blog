@@ -8,6 +8,7 @@ import GuestFooter from '@/Guest/Partials/Footer.vue'
 <template>
     <div id="app">
         <div>
+            <notifications />
             <loading v-model:active="isLoading"
                  :can-cancel="false"
                  :is-full-page="fullPage"/>

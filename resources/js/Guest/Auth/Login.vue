@@ -1,4 +1,5 @@
 <script setup>
+import {onMounted, ref, computed } from 'vue'
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import AuthenticationCard from '@/Components/AuthenticationCard.vue';
 import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
@@ -11,6 +12,7 @@ import TextInput from '@/Components/TextInput.vue';
 defineProps({
     canResetPassword: Boolean,
     status: String,
+    error: String,
 });
 
 const form = useForm({
@@ -18,6 +20,7 @@ const form = useForm({
     password: '',
     remember: false,
 });
+
 
 const submit = () => {
     form.transform(data => ({
@@ -39,6 +42,9 @@ const submit = () => {
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
+        </div>
+        <div v-if="error" class="mb-4 font-medium text-sm text-red-600">
+            {{ error }}
         </div>
 
         <form @submit.prevent="submit">

@@ -13,6 +13,9 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use App\Traits\Admin\SearchTrait;
+use App\Traits\Admin\ColumnsTrait;
+use App\Traits\Admin\UuidTrait;
 
 class User extends Authenticatable
 {
@@ -22,15 +25,19 @@ class User extends Authenticatable
     use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
-
+    use UuidTrait;
+    use SearchTrait;
+    use ColumnsTrait;
+    
     /**
      * The attributes that are mass assignable.
      *
      * @var string<int, string>
      */
-    protected $fillable = [
-        'uuid', 'name', 'email', 'password',
-    ];
+    protected $guarded = [];
+    // protected $fillable = [
+    //     'uuid', 'name', 'email', 'password',
+    // ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -51,6 +58,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'created_at'  => 'date:d-M-Y',
+        'updated_at'  => 'date:d-M-Y',
     ];
 
     /**
@@ -78,5 +87,31 @@ class User extends Authenticatable
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class, 'user_id', 'id');
+    }
+
+    public static function getTableName()
+    {
+        return with(new static)->getTable();
+    }
+
+    public static function options($column)
+    {
+        if($column == 'status'){
+            $options = [
+                ['id' => 1,'caption' => 'Inactive', 'color' => 'bg-yellow-500'],
+                ['id' => 2,'caption' => 'Active', 'color' => 'bg-green-500'],
+            ];
+        }
+        if($column == 'user_category'){
+            $options = [
+                ['id' => 2,'caption' => 'Regular', 'color' => 'bg-yellow-500'],
+                ['id' => 100,'caption' => 'Admin', 'color' => 'bg-green-500'],
+            ];
+        }
+        if(isset($options)){
+            return $options;
+        }else{
+            return null;
+        }
     }
 }
